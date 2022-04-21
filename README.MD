@@ -1,7 +1,5 @@
 # LiteRBAC
 
----
-
 **We keep it Simple as Lite and Fast as Light**
 
 ## Design
@@ -22,8 +20,6 @@ We think RBAC mean `Role Based Authorization Control`, Use `Node` build `Role`, 
 - We don't want use reflect, Its performance killer, If multi-implements needed, Just use interface
 
 ## Beginning
-
----
 
 Sorry for boring theory, But using LiteRBAC you must know those basic, But I promise you it will as simple as possible.
 
