@@ -122,7 +122,7 @@ role.appednRole(role2);
 role.appednRole(role3);
 ```
 
-Internally, The LinkedList of Roles store them in this order: `role3 - role2 - role1`. When check, Role3 will invoke first, If Role3 reject this permission, `check` will still go one invoke Role2 then Role1 util any Role accept this request. If no one answer this request, return default behavior.
+Internally, The LinkedList of Roles store them in this order: `role3 - role2 - role1`. When check, Role3 will invoke first, If Role3 reject this permission, `check` will not return immediately, Still go on invoke Role2 then Role1 util any Role accept this request. If no one answer this request, return default behavior.
 
 ### One more thing - The value store
 
