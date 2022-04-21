@@ -111,8 +111,8 @@ Difference between Role and User is policy of final decision
 
 When checking permission:
 
-- User will check all roles one by one, And return true immediately when a Role return accepted. They are parallel.
 - Role will check itself first then all inherits, And return false immediately when a reject appears. They are in series.
+- User will check all roles one by one, And return true immediately when a Role return accepted. They are parallel (Logically parallel, They run in single thread).
 
 For example:
 
