@@ -99,7 +99,7 @@ role.appendParent(role2);
 role.appendParent(role3);
 ```
 
-Internally, The LinkedList of inherit store them in this order: `role3 - role2 - role1`. When check, Role3 will invoke first, If Role3 reject this permission, `check` will return false even if Role2 or Role1 accept this request. If no one answer this request, return default behavior.
+Internally, The LinkedList of inherit store them in this order: `role3 - role2 - role1`. When check, Role3 will invoke first, If Role3 reject this permission, `check` will return false immediately even if Role2 or Role1 accept this request. If no one answer this request, return default behavior.
 
 ### User
 
