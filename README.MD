@@ -206,8 +206,12 @@ Due to the immutable design, modify operation not thread safe:
 
 **CAUTION: THOSE OPERATIONS ARE SUPER ADVANCED, BE REALLY CAREFULLY**
 
-### Default Behavior
+### Default Behavior of User
+
+If none answer the check request, Return the default behavior. You can set it with `RBAC.setLiteUserDefaultBehavior(true/false)`, And default behavior is false.
+
+### Default Behavior of Role
 
 **This function not fully tested**
 
-Inherit introduce third status of permission check: Yes/No/Unknown, So if all Roles not config the specific permission. There will be a default result. You can set it with `RBAC.setLiteRoleDefaultBehavior(true/false)`, And default behavior is false.
+Inherit introduce third status of permission check: Yes/No/Unknown, If none answer the check request, Return the default behavior. You can set it with `RBAC.setLiteRoleDefaultBehavior(true/false)`, And default behavior is false.
