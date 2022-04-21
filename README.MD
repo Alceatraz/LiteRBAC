@@ -212,6 +212,4 @@ If none answer the check request, Return the default behavior. You can set it wi
 
 ### Default Behavior of Role
 
-**This function not fully tested**
-
-Inherit introduce third status of permission check: Yes/No/Unknown, If none answer the check request, Return the default behavior. You can set it with `RBAC.setLiteRoleDefaultBehavior(true/false)`, And default behavior is false.
+If none answer the check request, Return the default behavior. You can set it with `RBAC.setLiteRoleDefaultBehavior(true/false)`, And default behavior is false.
