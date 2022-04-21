@@ -139,6 +139,7 @@ role.getSuffix("foo.bar.hello"); // Will return "world", String
 role.getSuffixes("foo.bar.hello"); // Will return "world" "rbac", List<String>
 role.getSuffixes("foo.bar.limit.rate1"); // Will return "17" "73", List<String>
 role.getSuffixes("foo.bar.limit.rate2"); // Will return "24" "42", List<String>
+role.getSuffixes("foo.bar.limit"); // Will rise exception, Due to there are two sub-node
 ```
 
 > Tips: Value store function dont care Node's mode, No matter positive or negative.
