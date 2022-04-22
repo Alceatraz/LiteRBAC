@@ -10,6 +10,14 @@ public class FreePassUser extends User {
 
     private static final List<Role> parents = List.of();
 
+    protected static FreePassUser getInstance() {
+        return new FreePassUser();
+    }
+
+    protected FreePassUser() {
+
+    }
+
     @Override
     public boolean check(String permission) {
         return true;
