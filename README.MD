@@ -213,3 +213,7 @@ If none answer the check request, Return the default behavior. You can set it wi
 ### Default Behavior of Role
 
 If none answer the check request, Return the default behavior. You can set it with `RBAC.setLiteRoleDefaultBehavior(true/false)`, And default behavior is false.
+
+## Demo
+
+Demo shows in junit test case.

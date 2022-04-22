@@ -8,7 +8,6 @@ import studio.blacktech.rbac.Role;
 import studio.blacktech.rbac.User;
 
 import java.util.List;
-import java.util.TreeMap;
 
 /**
  * Too much minecraft example. But hey, It's well known :)
@@ -17,13 +16,15 @@ public class LiteRBACTest {
 
     @Test
     public void test1() {
+
         Role role = RBAC.getRole();
+
         role.appendPositive(
             "essential.home.*.set",
             "essential.home.*.goto",
             "essential.home.limit.5"
         );
-        role.listPermission().print();
+
         Assertions.assertTrue(role.check("essential.home.home1.set"));
         Assertions.assertTrue(role.check("essential.home.home1.goto"));
         Assertions.assertEquals(role.getSuffix("essential.home.limit"), "5");
@@ -31,37 +32,47 @@ public class LiteRBACTest {
 
     @Test
     public void test2() {
+
         Role role = RBAC.getRole();
+
         role.appendPositive(
             "bukkit.*.help"
         );
+
         role.appendNegative(
             "bukkit.shutdown.*"
         );
-        role.listPermission().print();
+
         Assertions.assertTrue(role.check("bukkit.title.help"));
         Assertions.assertFalse(role.check("bukkit.shutdown.help"));
     }
 
     @Test
     public void test3() {
+
         Role role1 = RBAC.getRole();
+
         role1.appendPositive(
-            "auth-me.pending.effect"
+            "authme.pending.effect"
         );
+
         role1.appendNegative(
+
         );
+
         Role role2 = RBAC.getRole();
+
         role2.appendPositive(
 
         );
+
         role2.appendNegative(
-            "auth-me.pending.effect"
+            "authme.pending.effect"
         );
+
         role2.appendParent(role1);
-        role1.listPermission().print();
-        role2.listPermission().print();
-        Assertions.assertFalse(role2.check("auth-me.pending.effect"));
+
+        Assertions.assertFalse(role2.check("authme.pending.effect"));
     }
 
     @Test
@@ -76,7 +87,6 @@ public class LiteRBACTest {
             "weight.1",
             "name.[Level-1]"
         );
-
 
         role2.appendPositive(
             "weight.2",
@@ -95,16 +105,10 @@ public class LiteRBACTest {
 
         Role role = RBAC.getRole();
 
-        TreeMap<Integer, Role> treeMap = new TreeMap<>();
-
-        treeMap.put(Integer.valueOf(role1.getSuffix("weight")), role1);
-        treeMap.put(Integer.valueOf(role2.getSuffix("weight")), role2);
-        treeMap.put(Integer.valueOf(role3.getSuffix("weight")), role3);
-        treeMap.put(Integer.valueOf(role4.getSuffix("weight")), role4);
-
-        treeMap.forEach((k, v) -> role.appendParent(v));
-
-        role.listPermission(true).print();
+        role.appendParent(role1);
+        role.appendParent(role2);
+        role.appendParent(role3);
+        role.appendParent(role4);
 
         Assertions.assertEquals(role.getSuffix("weight"), "4");
     }
@@ -112,15 +116,20 @@ public class LiteRBACTest {
 
     @Test
     public void test5() {
+
         Role role = RBAC.of(
+
             List.of(
                 "ess.command"
             ),
+
             List.of(
                 "ess.command.*",
                 "ess.command.**"
             )
+
         );
+
         Assertions.assertTrue(role.check("ess.command"));
         Assertions.assertFalse(role.check("ess.command.help"));
     }
@@ -172,6 +181,7 @@ public class LiteRBACTest {
 
         role3.appendPositive(
             "essential.home",
+            "essential.home.limit.5",
             "essential.sethome",
             "essential.tpa.*",
             "essential.wrap.*",
@@ -193,6 +203,7 @@ public class LiteRBACTest {
 
         role4.appendPositive(
             "essential.**",
+            "essential.home.limit.20",
             "worldguard.spawn.*"
         );
 
@@ -207,6 +218,8 @@ public class LiteRBACTest {
         Assertions.assertTrue(user3.check("worldguard.spawn.use"));
         Assertions.assertTrue(user4.check("worldguard.spawn.build"));
         Assertions.assertTrue(user5.check("bukkit.command.op"));
+
+        Assertions.assertEquals(user4.getSuffix("essential.home.limit"), "20");
     }
 
 }

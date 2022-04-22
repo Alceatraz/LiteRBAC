@@ -1,6 +1,5 @@
 package studio.blacktech.rbac;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,7 +22,7 @@ public class LiteUser extends User {
     //= Filed
     //= ================================================================================================================
 
-    private final List<Role> roles;
+    private final LinkedList<Role> roles;
 
     private final ConcurrentHashMap<String, Boolean> checkCache;
 
@@ -36,7 +35,9 @@ public class LiteUser extends User {
 
     protected static LiteUser getInstance(Role... roles) {
         LiteUser user = new LiteUser();
-        Collections.addAll(user.roles, roles);
+        for (Role role : roles) {
+            user.roles.addFirst(role);
+        }
         return user;
     }
 
@@ -54,7 +55,7 @@ public class LiteUser extends User {
     }
 
     public LiteUser(
-        List<Role> roles,
+        LinkedList<Role> roles,
         ConcurrentHashMap<String, Boolean> checkCache,
         ConcurrentHashMap<String, String> suffixCache,
         ConcurrentHashMap<String, List<String>> suffixesCache
@@ -109,7 +110,7 @@ public class LiteUser extends User {
     @Override
     public void appendRole(Role... roles) {
         for (Role role : roles) {
-            this.roles.add(0, role);
+            this.roles.addFirst(role);
         }
     }
 
