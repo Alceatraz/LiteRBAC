@@ -5,10 +5,14 @@ import org.junit.jupiter.api.Test;
 import studio.blacktech.rbac.LiteUser;
 import studio.blacktech.rbac.RBAC;
 import studio.blacktech.rbac.Role;
+import studio.blacktech.rbac.User;
 
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * Too much minecraft example. But hey, It's well known :)
+ */
 public class LiteRBACTest {
 
     @Test
@@ -141,6 +145,68 @@ public class LiteRBACTest {
 
         LiteUser user = RBAC.getUser(role1, role2, role3);
         Assertions.assertTrue(user.check("ess.tp3.home.invoke"));
+    }
+
+
+    @Test
+    public void test7() {
+
+        Role role1 = RBAC.getRole();
+
+        role1.appendPositive(
+            "authme.command.login",
+            "authme.command.register",
+            "authme.command.helpop"
+        );
+
+        Role role2 = RBAC.getRole();
+
+        role2.appendPositive(
+            "authme.command.email",
+            "authme.command.recovery",
+            "essential.command.spawn",
+            "essential.command.*.spawn"
+        );
+
+        Role role3 = RBAC.getRole();
+
+        role3.appendPositive(
+            "essential.home",
+            "essential.sethome",
+            "essential.tpa.*",
+            "essential.wrap.*",
+            "worldguard.*.build",
+            "worldguard.*.pick",
+            "worldguard.*.drop",
+            "worldguard.*.interact",
+            "worldguard.*.container",
+            "worldguard.*.use",
+            "worldguard.spawn.use",
+            "worldguard.spawn.interact"
+        );
+
+        role3.appendNegative(
+            "worldguard.spawn.*"
+        );
+
+        Role role4 = RBAC.getRole();
+
+        role4.appendPositive(
+            "essential.**",
+            "worldguard.spawn.*"
+        );
+
+        User user1 = RBAC.getUser(role1);
+        User user2 = RBAC.getUser(role1, role2);
+        User user3 = RBAC.getUser(role1, role2, role3);
+        User user4 = RBAC.getUser(role1, role2, role3, role4);
+        User user5 = RBAC.getFreePassUser();
+
+        Assertions.assertTrue(user1.check("authme.command.helpop"));
+        Assertions.assertTrue(user2.check("essential.command.world.spawn"));
+        Assertions.assertTrue(user3.check("worldguard.spawn.use"));
+        Assertions.assertTrue(user4.check("worldguard.spawn.build"));
+        Assertions.assertTrue(user5.check("bukkit.command.op"));
     }
 
 }
