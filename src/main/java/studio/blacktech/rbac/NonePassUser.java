@@ -10,6 +10,14 @@ public class NonePassUser extends User {
 
     private static final List<Role> parents = List.of();
 
+    protected static NonePassUser getInstance() {
+        return new NonePassUser();
+    }
+
+    protected NonePassUser() {
+
+    }
+
     @Override
     public boolean check(String permission) {
         return false;
