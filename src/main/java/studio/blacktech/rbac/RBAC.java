@@ -103,6 +103,14 @@ public class RBAC {
         return LiteUser.getInstance(roles);
     }
 
+    public static FreePassUser getFreePassUser() {
+        return FreePassUser.getInstance();
+    }
+
+    public static NonePassUser getNonePassUser() {
+        return NonePassUser.getInstance();
+    }
+
     //= ================================================================================================================
 
     protected static LinkedList<String> splitPermission(String permission) {
