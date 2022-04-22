@@ -3,6 +3,16 @@ package studio.blacktech.rbac;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * LiteRBAC provide and define of User and an implement called LiteUser
+ * <p>
+ * HINT: Protected method if backdoor for LiteRole, To avoid multiple times
+ * parse which cost much.
+ *.
+ * @see LiteUser The core function of LiteRBAC
+ * @see FreePassUser Always return true
+ * @see NonePassUser Always return false
+ */
 public abstract class User {
 
     //= ========================================================================
