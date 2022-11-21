@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * LiteRBAC provide and define of Role and an implement called LiteRole
  * <p>
- * HINT: Protected method if backdoor for LiteRole, To avoid multiple times
+ * HINT: Protected method is proprietary for LiteRole, To avoid multiple times
  * parse which cost much.
  *
  * @see LiteRole The core function of LiteRBAC

@@ -12,7 +12,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * Default implements of Role. Using node based permission store. Use cache for
  * speed up query, And support simple value store function.
  * <p>
- * New instance must use factory method in class RBAC
+ * Constructor and instantiation method is protected, Therefore you must invoke
+ * factory method in RBAC.class
  */
 public class LiteRole extends Role {
 

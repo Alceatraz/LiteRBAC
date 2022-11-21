@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * LiteRBAC provide and define of User and an implement called LiteUser
  * <p>
- * HINT: Protected method if backdoor for LiteRole, To avoid multiple times
+ * HINT: Protected method is proprietary for LiteRole, To avoid multiple times
  * parse which cost much.
  *.
  * @see LiteUser The core function of LiteRBAC

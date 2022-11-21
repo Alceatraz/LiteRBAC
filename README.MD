@@ -21,7 +21,7 @@ We think RBAC mean `Role Based Authorization Control`, Use `Node` build `Role`, 
 
 ## Beginning
 
-Sorry for boring theory, But using LiteRBAC you must know those basic, But I promise you it will as simple as possible.
+Sorry for boring theory, But using LiteRBAC you must know those basic, But I promise you it will be as simple as possible.
 
 ### Node
 

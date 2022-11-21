@@ -8,7 +8,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * Default implements of User. Use cache for speed up query. Provide roles
  * method wrapper.
  * <p>
- * New instance must use factory method in class RBAC
+ * Constructor and instantiation method is protected which mean you must invoke
+ * factory method in RBAC.class
  */
 public class LiteUser extends User {
 
